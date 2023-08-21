@@ -1,0 +1,50 @@
+<?php
+$allTapCards = $this->getAllTapSavedCards();
+if (count($allTapCards)) {
+    ?>
+    <div class="table-wrapper orders-history">
+        <table class= "data table table-order-items">
+            <thead>
+                <tr>
+                    <th scope="col" class="col"><strong><?= /* @escapeNotVerified */ __('Brand') ?></strong></th>
+                    <th scope="col" class="col"><strong><?= /* @escapeNotVerified */ __('Card Number') ?></strong></th>
+                    <th scope="col" class="col"><strong><?= /* @escapeNotVerified */ __('Action') ?></strong></th>
+                </tr>
+            </thead>
+            <?php
+            foreach ($allTapCards as $savedcard) {
+                $actionUrl = $this->storeManager->getStore()
+                    ->getUrl(
+                        'tap/index/delete',
+                        ['uid' => $savedcard["value"]]
+                    );
+                ?>
+                <tr>
+                    <td data-th="<?= /* @escapeNotVerified */ __('Brand') ?>" class="col"><img class="saved-cards-img" src="<?php echo $savedcard['icon']; ?>"/></td>
+                    <td data-th="<?= /* @escapeNotVerified */ __('Label') ?>" class="col"><?php echo $savedcard['label']; ?></td>
+                    <td data-th="<?= /* @escapeNotVerified */ __('Action') ?>" class="col"> 
+                        <a style="color: blue;" href="<?php echo $actionUrl; ?>"><?= /* @escapeNotVerified */ __('Delete') ?></a>
+                    </td>
+                </tr>
+                
+                <?php
+            }
+            ?>
+        </table>
+    </div>
+    <?php
+} else { ?>
+    <div class="message info empty"><span><?= /* @escapeNotVerified */ __('You have no saved cards.') ?></span></div>
+<?php
+}
+?>
+<style type="text/css">
+    .saved-cards-img {
+        height: 32px;
+        display: inline-block;
+        margin-bottom: -10px;
+        margin-top: -6px;
+        margin-right: 5px;
+        margin-left: 2px;
+    }
+</style>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * File is used for Order Approval module in Magento 2
+ * devlogicsol TapPay 
+ *
+ * @category TapPay
+ * @package  devlogicsol
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="customer_account_navigation">
+            <block class="Magento\Customer\Block\Account\SortLinkInterface" name="customer-account-navigation-tappay-cards-link">
+                <arguments>
+                    <argument name="path" xsi:type="string">tap/index/cards</argument>
+                    <argument name="label" xsi:type="string" translate="true">My Cards</argument>
+                    <argument name="sortOrder" xsi:type="number">220</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>
